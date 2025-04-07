@@ -1,0 +1,33 @@
+#!/bin/bash
+echo ""
+echo "FinSpyV2 Installer 1.0"
+echo "-----------------------"
+
+export TMPDIR=`mktemp -d /tmp/selfextract.XXXXXX`
+
+ARCHIVE=`awk '/^__ARCHIVE_BELOW__/ {print NR + 1; exit 0; }' $0`
+
+echo ""
+echo "Extracting Installation Files..."
+echo ""
+
+tail -n+$ARCHIVE $0 | tar xzv -C $TMPDIR
+
+echo ""
+echo "Launching Installer..."
+echo ""
+
+CDIR=`pwd`
+echo CDIR
+echo $CDIR
+echo TMPDIR
+echo $TMPDIR
+cd $TMPDIR
+./installer
+
+cd $CDIR
+rm -rf $TMPDIR
+
+exit 0
+
+__ARCHIVE_BELOW__

@@ -1,0 +1,63 @@
+# Configuration file 
+
+FIN_AGENT_PORTS    = 9119
+FIN_AGENT_NETWORK_INTERFACE = eth1
+
+
+# List of all Proxies including their ports, to which the Master
+# may connect
+
+FIN_PROXY_1   = 127.0.0.1, 9118
+
+
+# List of all Proxies including their ports, to which Targets
+# may connect (the IP Addresses are external IPs !)
+
+FIN_TARGET_PROXY_1   = tiger.gamma-international.de, 9111,9112,9113
+#FIN_TARGET_PROXY_2   = foo.bar.com, 22,25,80,110,465,993,995
+
+
+FIN_LOADABLE_MODULE_FOLDER = ../lib
+FIN_REPOSITORY_VOLUME      = /finspy_master_repository
+
+/* top level directory */
+FIN_HOME_DIRECTORY = .
+
+# Monitoring Center:
+FIN_MC_ENABLED = false
+
+# path for logfiles
+FIN_LOGGING_PATH = /tmp
+
+# path for certificates
+FIN_CERTIFICATE_PATH = ./certs
+
+#####################   Software Updates ########################### 
+
+# IP of the FINUM server
+FINUM_SERVER = update.gamma-international.de
+
+# list of ports we may try to connect:
+FINUM_PORTS               = 6666
+
+# directory for all certificate files' 
+FINUM_CERTIFICATE_PATH = ./license
+
+# top directory of the files to be updated
+FINUM_DESTINATION_PATH    = ../updates
+
+# directory for the localization file 'finum_client.loc' 
+FINUM_LOC_PATH        = . 
+
+# directory for the logging file ('finum_access.log', 'finum_error.log')
+FINUM_LOGGING_PATH        = /tmp
+
+# socket timeout (in seconds)
+FINUM_SOCKET_TIMEOUT     = 3
+
+#####################  End of Software Updates Configuration  ################# 
+
+
+
+
+

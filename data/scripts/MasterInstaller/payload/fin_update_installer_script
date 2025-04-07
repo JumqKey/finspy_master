@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo "Stopping finspy_master"
+
+monit stop finspy_master
+
+echo "Extracting Software Files..."
+tar --directory /usr/local -xvf ./*.tar
+
+echo ""
+echo "Running Post-Installation Steps..."
+
+# wait some time until the 'finspy_master# binary has exited
+
+SECONDS=1
+MAX_SECONDS=20
+
+while [ "$SECONDS" -lt "$MAX_SECONDS" ]
+  do
+     ARGNUM=$(($ARGNUM + 1))
+
+     if [ -e "/var/run/finspy_master.pid" ]; then
+        ARGNUM=MAX_SECONDS
+     fi
+  done
+
+
+echo "Starting finspy_master"
+
+monit start finspy_master
+
+echo ""
+echo "FinFisher Installer done."
+echo ""
